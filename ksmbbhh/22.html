@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KSMBBHH-SUB</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/style.css">
+    <script src='https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/Jq6HIbgz.js'></script>
+</head>
+<body>
+    <style>
+        #player {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+                }
+    </style>
+    <div id="player"></div>
+    <script>
+          function getParameterByName(name) {
+              name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+              var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                  results = regex.exec(location.search);
+              return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+          }
+              var getURL = getParameterByName('url');
+              var getSUB = getParameterByName('sub');
+    </script>
+    <script>
+    const playerInstance = jwplayer("player").setup({
+    controls: true,
+    sharing: false,
+    displaytitle: true,
+    displaydescription: true,
+    skin: {
+        name: "netflix"
+    },
+    logo: {file: "",},
+    captions: {
+        color: "#FFF",
+        fontSize: 14,
+        backgroundOpacity: 0,
+        edgeStyle: "raised"
+    },
+playlist: [{title: "Kyunki Saas Maa Bahu Beti Hoti Hai  Episode 22  ", description:" APLIKASI SINETRON INDONESIA",  image: "    https://akamaividz2.zee5.com/image/upload/w_335,h_188,c_scale,f_webp,q_auto:eco/resources/0-1-6z5440714/list/00000145f6d5db30dec245378443ee8990c0067a.jpg", sources: [{label: '0', type: 'dash', file: "https://zee5vod.akamaized.net/drm1/elemental/dash/TV_SHOWS/ZEE_TV/October2023/09102023/Episode/BQC_CS_REV_Kyunki_Saas_Maa_Bahu_Beti_Hoti_Hai_Ep22_Episode_09102023_hi_e115d07c4b8efdad31a3a75b612b5742/manifest-connected.mpd", drm: {"clearkey":{"keyId": '9b35754cdeec48658afafcb4eba7a264',"key": 'f1f14a2da1390095d1e21797bf2df216'}},}],   tracks: [{label: "INDONESIA", file: "   https://d42220622.github.io/ksmbbhh/22.id.vtt", kind: "captions", default: true,}],}],                                                  
+});
+
+playerInstance.on("ready", function() {
+
+    // Move the timeslider in-line with other controls
+    const playerContainer = playerInstance.getContainer();
+    const buttonContainer = playerContainer.querySelector(".jw-button-container");
+    const spacer = buttonContainer.querySelector(".jw-spacer");
+    const timeSlider = playerContainer.querySelector(".jw-slider-time");
+    buttonContainer.replaceChild(timeSlider, spacer);
+    // Forward 10 seconds
+    const rewindContainer = playerContainer.querySelector(
+        ".jw-display-icon-rewind"
+    );
+    const forwardContainer = rewindContainer.cloneNode(true);
+    const forwardDisplayButton = forwardContainer.querySelector(
+        ".jw-icon-rewind"
+    );
+    forwardDisplayButton.style.transform = "scaleX(-1)";
+    forwardDisplayButton.ariaLabel = "Forward 10 Seconds";
+    const nextContainer = playerContainer.querySelector(".jw-display-icon-next");
+    nextContainer.parentNode.insertBefore(forwardContainer, nextContainer);
+    // control bar icon
+    playerContainer.querySelector(".jw-display-icon-next").style.display = "none"; // hide next button
+    const rewindControlBarButton = buttonContainer.querySelector(
+        ".jw-icon-rewind"
+    );
+    const forwardControlBarButton = rewindControlBarButton.cloneNode(true);
+    forwardControlBarButton.style.transform = "scaleX(-1)";
+    forwardControlBarButton.ariaLabel = "Forward 10 Seconds";
+    rewindControlBarButton.parentNode.insertBefore(
+        forwardControlBarButton,
+        rewindControlBarButton.nextElementSibling
+    );
+    // add onclick handlers
+    [forwardDisplayButton, forwardControlBarButton].forEach((button) => {
+        button.onclick = () => {
+            playerInstance.seek(playerInstance.getPosition() + 10);
+        };
+    });
+    });
+</script>
+</body>
+</html>
