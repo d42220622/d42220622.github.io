@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yeh Hai Chahatein</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/style.css">
+    <script src='https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/Jq6HIbgz.js'></script>
+</head>
+<body>
+    <style>
+        #player {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    <div id="player"></div>
+    <script>
+    const playerInstance = jwplayer("player").setup({
+    controls: true,
+    sharing: false,
+    displaytitle: true,
+    displaydescription: true,
+    abouttext: "",
+    aboutlink: "",
+    skin: { name: "netflix" },
+    logo: { file: "",  },
+    captions: { color: "#FFF",  fontSize: 14,   backgroundOpacity: 0,   edgeStyle: "raised" },
+    playlist: [{    title: "APLIKASI SINETRON INDONESIA",   description: "BUDAYAKAN KLIK IKLAN SEBELUM DAN SESUDAH NONTON", image: "",  sources: [{label: '0', type: 'hls',    file: "  https://video.twimg.com/amplify_video/1784188775486066688/pl/LfGVKWe_8RTcQ4Oc.m3u8 ", default: true,}], 
+        tracks:[{file: "https://d42220622.github.io/yhc/s2/22.vtt", label: "INDONESIA", kind: "captions",   default: true,  }], }],
+    });
+</script>
+</body>
+</html>
