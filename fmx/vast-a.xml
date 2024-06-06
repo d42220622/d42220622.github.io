@@ -1,0 +1,27 @@
+<VAST version="2.0">
+<Ad id="1">
+<InLine>
+<AdSystem version="4.11.0-10">googleapis</AdSystem>
+<AdTitle>
+<![CDATA[ googleapis ]]>
+</AdTitle>
+<Creatives>
+<Creative sequence="1" id="1">
+<Linear>
+<Duration>00:00:15</Duration>
+<VideoClicks>
+<ClickThrough>
+<![CDATA[ https://www.google.com/ ]]>
+</ClickThrough>
+</VideoClicks>
+<MediaFiles>
+<MediaFile delivery="progressive" bitrate="1000" width="1280" height="720" type="video/mp4">
+<![CDATA[ https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4 ]]>
+</MediaFile>
+</MediaFiles>
+</Linear>
+</Creative>
+</Creatives>
+</InLine>
+</Ad>
+</VAST>
