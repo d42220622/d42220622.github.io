@@ -21,8 +21,8 @@
         var a = new RegExp("[\\?&]" + e + "=([^&#]*)").exec(location.search);
         return null === a ? "" : decodeURIComponent(a[1].replace(/\+/g, " "))
       }
-      var getURL = getParameterByName("url"),
-        getSUB = getParameterByName("sub")
+      var getURL = getParameterByName("i"),
+        getSUB = getParameterByName("s")
     </script>
     <script>
       const playerInstance = jwplayer("player").setup({
@@ -49,12 +49,12 @@
           sources: [{
             label: "0",
             type: 'mp4',
-            file: 'https://i.poopcdn.com/'getURL'.mp4',
+            file: getURL,
             default: true,
           }],
           tracks: [{
             label: "INDONESIA",
-            file: 'https://d42220622.github.io/mishri/'getSUB'.vtt',
+            file: getSUB,
             kind: "captions",
             default: true,
           }],
