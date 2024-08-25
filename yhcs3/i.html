@@ -21,7 +21,7 @@
         var a = new RegExp("[\\?&]" + e + "=([^&#]*)").exec(location.search);
         return null === a ? "" : decodeURIComponent(a[1].replace(/\+/g, " "))
       }
-      var getURL = getParameterByName("i"),
+      var getURL = getParameterByName("url"),
         getSUB = getParameterByName("s")
     </script>
     <script>
