@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PKPAS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/style.css">
+    <script src='https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/Jq6HIbgz.js'></script>
+</head>
+<body>
+    <style>
+        #player {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    <div id="player"></div>
+    <script>
+    const playerInstance = jwplayer("player").setup({
+    controls: true,
+    sharing: false,
+    displaytitle: true,
+    displaydescription: true,
+    abouttext: "",
+    aboutlink: "",
+    skin: { name: "netflix" },
+    logo: { file: "",  },
+    captions: { color: "#FFF",  fontSize: 14,   backgroundOpacity: 0,   edgeStyle: "raised" },
+    playlist: [{    title: "APLIKASI SINETRON INDONESIA",   description: "PYAAR KA PEHLA ADHYAYA SHIVSHAKTI - 012 ", image: "",  sources: [{label: '0', type: 'dash',    file: "  https://zee5vod.akamaized.net/drm1/elemental/dash/TV_SHOWS/ZEE_TV/July2023/14072023/Episode/BQC_CS_REV_Pyaar_Ka_Pehla_Adhyaya_ShivShakti_Ep12_Episode_14072023_hi_27f236ef7444127a5ab291a58f7b1f28/manifest.mpd  ",   drm: {"clearkey": {"keyId": 'f732d3d09b61445ea9eb51088cdd6e95',"key": '0c42dfab59f5e7883f7ab2247db6243c'}},  }], tracks:[{file: "https://d42220622.github.io/pkpas/012.vtt", label: "INDONESIA", kind: "captions",   default: true,  }], }],
+    });
+</script>
+</body>
+</html>

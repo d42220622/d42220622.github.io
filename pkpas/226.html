@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PKPAS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/style.css">
+    <script src='https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/Jq6HIbgz.js'></script>
+</head>
+<body>
+    <style>
+        #player {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    <div id="player"></div>
+    <script>
+    const playerInstance = jwplayer("player").setup({
+    controls: true,
+    sharing: false,
+    displaytitle: true,
+    displaydescription: true,
+    abouttext: "",
+    aboutlink: "",
+    skin: { name: "netflix" },
+    logo: { file: "",  },
+    captions: { color: "#FFF",  fontSize: 14,   backgroundOpacity: 0,   edgeStyle: "raised" },
+    playlist: [{    title: "APLIKASI SINETRON INDONESIA",   description: "PYAAR KA PEHLA ADHYAYA SHIVSHAKTI - 226 ", image: "",  sources: [{label: '0', type: 'dash',    file: "  https://zee5vod.akamaized.net/drm1/titanfile/dash/TV_SHOWS/ZEE_TV/February2024/18022024/Episode/CS_Pyaar_Ka_Pehla_Adhyaya_ShivShakti_Ep226_Episode_18022024_hi_7a2f29cab1ea797809d8d0fe78e04e53/manifest.mpd  ",   drm: {"clearkey": {"keyId": '1965e64eb3c73b5693dc523fb9f1ef0d',"key": '740bafbc46f5c20521b73c93319db767'}},  }], tracks:[{file: "https://d42220622.github.io/pkpas/226.vtt", label: "INDONESIA", kind: "captions",   default: true,  }], }],
+    });
+</script>
+</body>
+</html>

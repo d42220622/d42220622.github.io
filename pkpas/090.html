@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PKPAS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/style.css">
+    <script src='https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/Jq6HIbgz.js'></script>
+</head>
+<body>
+    <style>
+        #player {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    <div id="player"></div>
+    <script>
+    const playerInstance = jwplayer("player").setup({
+    controls: true,
+    sharing: false,
+    displaytitle: true,
+    displaydescription: true,
+    abouttext: "",
+    aboutlink: "",
+    skin: { name: "netflix" },
+    logo: { file: "",  },
+    captions: { color: "#FFF",  fontSize: 14,   backgroundOpacity: 0,   edgeStyle: "raised" },
+    playlist: [{    title: "APLIKASI SINETRON INDONESIA",   description: "PYAAR KA PEHLA ADHYAYA SHIVSHAKTI - 090 ", image: "",  sources: [{label: '0', type: 'dash',    file: "  https://zee5vod.akamaized.net/drm1/elemental/dash/TV_SHOWS/ZEE_TV/October2023/03102023/Episode/BQC_CS_Pyaar_Ka_Pehla_Adhyaya_ShivShakti_Ep90_Episode_03102023_hi_6c79e1a118387a22748ee502d9b845cd/manifest.mpd  ",   drm: {"clearkey": {"keyId": '0760594d58024b3189cc87793e1b9be5',"key": '79797c3ad1ae1b829cf156b7fb1dd59a'}},  }], tracks:[{file: "https://d42220622.github.io/pkpas/090.vtt", label: "INDONESIA", kind: "captions",   default: true,  }], }],
+    });
+</script>
+</body>
+</html>

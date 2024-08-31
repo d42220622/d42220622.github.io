@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PKPAS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/style.css">
+    <script src='https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/Jq6HIbgz.js'></script>
+</head>
+<body>
+    <style>
+        #player {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    <div id="player"></div>
+    <script>
+    const playerInstance = jwplayer("player").setup({
+    controls: true,
+    sharing: false,
+    displaytitle: true,
+    displaydescription: true,
+    abouttext: "",
+    aboutlink: "",
+    skin: { name: "netflix" },
+    logo: { file: "",  },
+    captions: { color: "#FFF",  fontSize: 14,   backgroundOpacity: 0,   edgeStyle: "raised" },
+    playlist: [{    title: "APLIKASI SINETRON INDONESIA",   description: "PYAAR KA PEHLA ADHYAYA SHIVSHAKTI - 249 ", image: "",  sources: [{label: '0', type: 'dash',    file: "  https://zee5vod.akamaized.net/drm1/titanfile/dash/TV_SHOWS/ZEE_TV/March2024/13032024/Episode/Pyaar_Ka_Pehla_Adhyaya_ShivShakti_Ep249_Episode_13032024_hi_9fe4a450e0d442f32d688168adcdf033/manifest.mpd  ",   drm: {"clearkey": {"keyId": 'deebc30739fe32bf9350cf47cbffa7f6',"key": '4f400766e845ca0da796a761ac3597fb'}},  }], tracks:[{file: "https://d42220622.github.io/pkpas/249.vtt", label: "INDONESIA", kind: "captions",   default: true,  }], }],
+    });
+</script>
+</body>
+</html>
