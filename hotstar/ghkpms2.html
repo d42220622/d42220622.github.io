@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ghum-hai-kisikey-pyaar-meiin-s2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/style.css">
+    <script src='https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/Jq6HIbgz.js'></script>
+</head>
+<body>
+    <style>
+        #player {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+    <div id="player"></div>
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get the 'episode' parameter from the URL
+        const lineNumber = parseInt(getUrlParameter('episode'), 10);
+
+        // Fetch the playlist JSON file
+        fetch('ghkpms2.json')  // Replace 'path/to/playlist.json' with the actual path
+            .then(response => response.json())
+            .then(data => {
+                // Check if the specified line number exists in the JSON array
+                if (lineNumber >= 0 && lineNumber < data.length) {
+                    const selectedPlaylist = [data[lineNumber]]; // Wrap in an array as JWPlayer expects an array
+
+                    // Initialize JWPlayer with the selected playlist entry
+                    jwplayer("player").setup({
+                        controls: true,
+                        sharing: false,
+                        displaytitle: true,
+                        displaydescription: true,
+                        abouttext: "",
+                        aboutlink: "",
+                        skin: { name: "netflix" },
+                        logo: { file: "" },
+                        captions: {
+                            color: "#FFF",
+                            fontSize: 14,
+                            backgroundOpacity: 0,
+                            edgeStyle: "raised"
+                        },
+                        playlist: selectedPlaylist
+                    });
+                } else {
+                    console.error("Playlist entry not found.");
+                }
+            })
+            .catch(error => console.error('Error loading playlist:', error));
+    </script>
+</body>
+</html>
