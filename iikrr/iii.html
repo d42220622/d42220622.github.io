@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iss-ishq-ka-rabb-rakha</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/style.css">
+  <script src="https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/test/Jq6HIbgz.js" defer></script>
+  <style>
+    #player {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="player"></div>
+  <script>
+    // Fetch URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const episodeNumber = parseInt(urlParams.get("episode"), 10);
+
+    if (isNaN(episodeNumber)) {
+      console.error("Invalid or missing 'episode' parameter in URL.");
+    } else {
+      // Fetch the source.json file
+      fetch("https://cdn.jsdelivr.net/gh/d42220622/d42220622.github.io@main/iikrr/iikrk.json")
+        .then(response => {
+          if (!response.ok) throw new Error("Failed to load source.json");
+          return response.json();
+        })
+        .then(data => {
+          // Validate episode number
+          if (episodeNumber < 1 || episodeNumber > data.length) {
+            throw new Error("Episode number out of range.");
+          }
+
+          // Get the specific episode data (adjusting for zero-based index)
+          const episodeData = data[episodeNumber - 1];
+
+          // Setup JWPlayer
+          const playerInstance = jwplayer("player").setup({
+            controls: true,
+            sharing: false,
+            displaytitle: true,
+            displaydescription: true,
+            skin: { name: "netflix" },
+            logo: { file: "" },
+            captions: {
+              color: "#FFF",
+              fontSize: 14,
+              backgroundOpacity: 0,
+              edgeStyle: "raised"
+            },
+            playlist: [{
+              title: "ISS ISHQ KA RABB RAKHA",
+			  description: "APLIKASI SINETRON INDONESIA",
+              image: episodeData.image,
+              sources: [{
+                label: "mp4",
+                type: "mp4",
+                file: episodeData.file,
+                default: true,
+              }],
+              tracks: [{
+                label: "Subtitles",
+                file: episodeData.subtitles,
+                kind: "captions",
+                default: true,
+              }],
+            }],
+          });
+
+          playerInstance.on("ready", () => {
+            console.log("Player is ready with episode:", episodeData.title);
+          });
+        })
+        .catch(error => {
+          console.error("Error:", error.message);
+        });
+    }
+  </script>
+</body>
+</html>
