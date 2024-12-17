@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ANTV x Vision+</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <script type="text/javascript" src="//ssl.p.jwpcdn.com/player/v/8.22.0/jwplayer.js"></script>
+    <script type="text/javascript">jwplayer.key = "XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/rasod/JWPlayer-Chapters-API@master/jwchapters.js"></script>
+    <style>
+        #player {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+</head>
+<body>
+<div id="player"></div>
+
+<script type="text/javascript">
+    // Function to get URL parameters
+    function getData(param) {
+        const result = new RegExp("[?&]" + param + "=([^&#]*)").exec(location.search);
+        return result ? decodeURIComponent(result[1].replace(/\+/g, " ")) : "";
+    }
+
+    // Get chapters and other parameters
+    const begin = getData("begin");
+    const end = getData("end");
+    const cbParam = getData("cb");
+    const chapterPoints = cbParam ? cbParam.split(",").map(Number) : [];
+
+    // Construct the file URL
+    const fileUrl = `https://av-ch-cdn.mncnow.id/live/eds/ANTV/sa_dash_vmx/ANTV.mpd?begin=${begin}&end=${end}`;
+
+    // Initialize JWPlayer
+    const playerInstance = jwplayer("player");
+    playerInstance.setup({
+        file: fileUrl,
+        type: "dash",
+        width: "100%",
+        height: "100%",
+        aspectratio: "16:9",
+        tracks: [{
+            file: chaptersBlob(chapterPoints), // Add chapters dynamically
+            kind: "chapters"
+        }]
+    });
+
+    // Logic for "Next Chapter" button
+    let currentChapterIndex = 0;
+
+    function goToNextChapter() {
+        if (currentChapterIndex < chapterPoints.length - 1) {
+            currentChapterIndex++;
+            playerInstance.seek(chapterPoints[currentChapterIndex]);
+        }
+    }
+
+    // Add a custom "Next Chapter" button
+    playerInstance.on("ready", function() {
+        playerInstance.addButton(
+            "https://icon-library.com/images/next-icon-png/next-icon-png-29.jpg", // URL to your button icon
+            "Go to Next Chapter", // Tooltip text
+            goToNextChapter, // Callback function
+            "next-chapter-button" // Unique button ID
+        );
+    });
+
+    // Event: Update current chapter based on playhead position
+    playerInstance.on("time", function(event) {
+        const currentTime = event.position;
+        for (let i = 0; i < chapterPoints.length; i++) {
+            if (currentTime >= chapterPoints[i]) {
+                currentChapterIndex = i;
+            }
+        }
+    });
+</script>
+</body>
+</html>
