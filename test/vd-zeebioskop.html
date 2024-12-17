@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video.js with Dash.js - Clear Key Demo</title>
+    <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/7.15.4/video.js"></script>
+    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+</head>
+<body>
+    <video id="video" class="video-js vjs-default-skin" width="640" height="360" controls></video>
+
+    <script>
+        var player = videojs('video', {
+            techOrder: ['dash']
+        });
+
+        // Setup DASH.js player
+        var dashPlayer = dashjs.MediaPlayer().create();
+        dashPlayer.initialize(document.querySelector('#video'), 'https://atemecdnbalancer-voe.sysln.id/live/eds/ZeeBioskop/mpd/ZeeBioskop.mpd', true);
+
+        // Custom headers with fetch API
+        var headers = new Headers();
+        headers.append('User-Agent', 'ExoPlayerDemo/2.15.1 (Linux; Android 10) ExpoPlayerLib/2.15.1');
+
+        fetch('https://atemecdnbalancer-voe.sysln.id/live/eds/ZeeBioskop/mpd/ZeeBioskop.mpd', { headers: headers })
+            .then(response => response.text())
+            .then(mpd => {
+                dashPlayer.attachSource(mpd);
+            });
+
+        // Clear Key DRM configuration
+        dashPlayer.getProtectionController().setServerCertificate('https://example.com/clearkey-cert.pem'); // You can configure your Clear Key cert here if needed
+    </script>
+</body>
+</html>
