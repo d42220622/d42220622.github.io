@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" charset="utf-8" async src="//ssl.p.jwpcdn.com/player/v/8.22.0/jwpsrv.js"></script>
+    <title>ANTV x Vision+</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <script type="text/javascript" src="//ssl.p.jwpcdn.com/player/v/8.22.0/jwplayer.js"></script>
+    <script type="text/javascript">jwplayer.key="XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo"</script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rasod/JWPlayer-Chapters-API@master/jwchapters.js"></script>
+    <script charset="utf-8" src="//ssl.p.jwpcdn.com/player/v/8.22.0/jwplayer.core.controls.js"></script>
+    <script charset="utf-8" src="//ssl.p.jwpcdn.com/player/v/8.22.0/provider.hlsjs.js"></script>
+    <style>
+        #player {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .player-poster[data-poster] {
+            background-size: cover;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        div a img {
+            visibility: hidden;
+        }
+        body::before {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            z-index: 10;
+            content: '';
+            height: 70px;
+            width: 140px;
+            background: url('') no-repeat;
+            background-size: 140px auto, auto;
+            opacity: 0.4;
+        }
+    </style>
+    <script charset="utf-8" src="//ssl.p.jwpcdn.com/player/v/8.22.0/polyfills.webvtt.js"></script>
+</head>
+<body style="margin:0; padding:0;">
+<div id="player"></div>
+
+<script type="text/javascript">
+    // Function to get URL parameter value
+    function getData(param) {
+        param = param.replace(/[\[]/, "[").replace(/[\]]/, "]");
+        const result = new RegExp("[?&]" + param + "=([^&#]*)").exec(location.search);
+        return result === null ? "" : decodeURIComponent(result[1].replace(/\+/g, " "));
+    }
+
+    // Retrieve begin, end, and cb parameters from URL
+    const begin = getData("begin");
+    const end = getData("end");
+    const cbParam = getData("cb"); // 'cb' holds chapter breakpoints like "300,667,800"
+
+    // Construct the file URL with begin and end parameters
+    const fileUrl = `https://av-ch-cdn.mncnow.id/live/eds/ANTV/sa_dash_vmx/ANTV.mpd?begin=${begin}&end=${end}`;
+
+    // Parse cb parameter into an array for chaptersBlob
+    const chapterPoints = cbParam ? cbParam.split(",").map(Number) : [];
+
+    // Setup JW Player with chaptersBlob dynamically
+    const playerInstance = jwplayer("player");
+    playerInstance.setup({
+        title: "BIASAKAN KLIK IKLAN SEBELUM & SESUDAH NONTON",
+        description: "PENGGUNA YANG JARANG KLIK IKLAN AKAN DIBLOKIR OTOMATIS OLEH SISTEM",
+        file: fileUrl,  // Use the dynamically constructed URL
+        drm: {
+            "clearkey": {
+                "keyId": '4310edb8b9ffe79abb40bacafa778ec3',
+                "key": 'aebb7e86d8a336d9a93d3dd8a41153cf'
+            }
+        },
+        type: "dash",
+        width: "100%",
+        height: "100%",
+        aspectratio: "16:9",
+        autostart: false,
+        cast: {},
+        tracks: [{
+            file: chaptersBlob(chapterPoints), // Use the parsed chapterPoints for chapters
+            kind: 'chapters'
+        }]
+    });
+
+    // Set language and quality when the player starts playing
+    playerInstance.on("play", function() {
+        playerInstance.setCurrentAudioTrack(getData("lang"));
+        playerInstance.setCurrentQuality(3);
+    });
+</script>
+
+</body>
+</html>
